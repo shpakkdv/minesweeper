@@ -5,7 +5,7 @@ import { getItemsAround, getMines, getCanOpenItems } from './getItems';
 import { validateField } from './validateField';
 
 export function checkAssumptions(originalField: number[][], originalMines: boolean[][]): [number, number] | void {
-  console.log('************ ASSUMPTIONS');
+  console.warn('************ ASSUMPTIONS');
   const cache: Record<string, boolean> = {};
 
   for (let y = 0, yLength = originalField.length; y < yLength; y++) {
@@ -41,7 +41,7 @@ export function checkAssumptions(originalField: number[][], originalMines: boole
 
           detectAllMines(field, mines);
           const isValidField = validateField(field, mines);
-          console.warn('valid', isValidField);
+          console.warn('valid', isValidField, x, y, );
 
           if (!isValidField) {
             return [x, y];

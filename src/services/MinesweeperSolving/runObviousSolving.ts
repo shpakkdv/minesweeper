@@ -44,8 +44,8 @@ export async function runObviousSolving(minesweeper: Minesweeper, field: Field, 
           }
 
           // FIRST detect mines
-          detectMinesAround(item, closedItemsAround, resultMines);
-          renderWhileSolving && updateGameField(null, resultMines);
+          const detected = detectMinesAround(item, closedItemsAround, resultMines);
+          renderWhileSolving && detected && updateGameField(null, resultMines);
 
           // SECOND open cells without mines
           const minesAround = getMines(itemsAround, resultMines);
