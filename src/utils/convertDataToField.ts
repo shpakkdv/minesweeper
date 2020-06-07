@@ -1,4 +1,6 @@
-export function convertDataToField(field: string): number[][] {
+import { Field } from 'models';
+
+export function convertDataToField(field: string): Field {
   const trimedField = field.trim();
 
   return trimedField
