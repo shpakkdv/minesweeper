@@ -1,5 +1,7 @@
-import { call, select } from 'redux-saga/effects';
+import { call, select, put } from 'redux-saga/effects';
 
+import { AppStatus } from 'constant';
+import { setAppStatus } from 'containers/Controls/actions';
 import * as gameFiledSelectors from 'containers/GameField/selectors';
 import { getMinesweeper } from 'services/Minesweeper';
 import { solveUntilWin as solve } from 'services/MinesweeperSolving/solveUntilWin';
@@ -13,6 +15,8 @@ export function* solveUntilWin(action: Action.SolveUntilWin) {
       return;
     }
 
+    yield put(setAppStatus(AppStatus.SOLVING));
+
     const gameLevel: ReturnSagaType<typeof controlsSelectors.gameLevel> = yield select(controlsSelectors.gameLevel);
     const renderWhileSolving: ReturnSagaType<typeof controlsSelectors.renderWhileSolving> = yield select(controlsSelectors.renderWhileSolving);
     const field: ReturnSagaType<typeof gameFiledSelectors.field> = yield select(gameFiledSelectors.field);
@@ -20,10 +24,9 @@ export function* solveUntilWin(action: Action.SolveUntilWin) {
 
     const minesweeper = getMinesweeper();
     yield call(solve, minesweeper, field, mines, gameLevel, renderWhileSolving);
-
-    // yield put(setField(result.field));
-    // yield put(setMines(result.mines));
   } catch (error) {
+    yield put(setAppStatus(AppStatus.FINISHED));
+
     console.warn('Error occurred during solving until the win.', action, error);
     alert(error);
   }

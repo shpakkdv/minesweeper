@@ -1,18 +1,19 @@
+import classNames from 'classnames';
 import React, { useState } from 'react';
 
 import Row from 'components/Row';
-import { GameLevel, GAME_LEVELS, LevelLabelByLevel } from 'constant';
+import { AppStatus, GameLevel, GAME_LEVELS, LevelLabelByLevel } from 'constant';
 import { GameFieldProps } from './models';
 import styles from './styles.module.scss';
 
-const GameField: React.FunctionComponent<GameFieldProps> = ({ field, gameLevel, loading, startGame }) => {
+const GameField: React.FunctionComponent<GameFieldProps> = ({ field, gameLevel, appStatus, cellSize, startGame }) => {
   const [selectedLevel, setLevel] = useState(gameLevel ?? GAME_LEVELS[0]);
 
   const onStartGameClick: React.MouseEventHandler<HTMLButtonElement> = (): void => {
     startGame(selectedLevel);
   };
 
-  if (loading) {
+  if (appStatus === AppStatus.LOADING) {
     return <div className={styles.loading}>Loading...</div>;
   }
 
@@ -33,7 +34,10 @@ const GameField: React.FunctionComponent<GameFieldProps> = ({ field, gameLevel, 
   }
 
   return (
-    <div className={styles.GameField} style={{ gridTemplateColumns: `repeat(${field[0].length}, 40px)`, gridAutoRows: '40px' }}>
+    <div
+      className={classNames(styles.GameField, { [styles.disabled]: appStatus === AppStatus.SOLVING })}
+      style={{ gridTemplateColumns: `repeat(${field[0].length}, ${cellSize}px)`, gridAutoRows: `${cellSize}px` }}
+    >
       {field.map((row, index) => (
         <Row key={index} rowIndex={index} row={row} />
       ))}

@@ -1,17 +1,29 @@
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import Controls from 'components/Controls';
-import { setGameLevel, tryToSolveAutomatically, solveUntilWin, startOver, finishGame, setRenderWhileSolvingValue } from './actions';
-import { gameLevel, renderWhileSolving } from './selectors';
+import { minesFound } from 'containers/GameField/selectors';
+import {
+  setCellSize,
+  tryToSolveAutomatically,
+  solveUntilWin,
+  startOver,
+  finishGame,
+  setRenderWhileSolvingValue,
+} from './actions';
+import { appStatus, cellSize, gameLevel, renderWhileSolving } from './selectors';
 
-const mapStateToProps = (state) => ({
-  gameLevel: gameLevel(state),
-  renderWhileSolving: renderWhileSolving(state),
+const mapStateToProps = createStructuredSelector({
+  appStatus,
+  cellSize,
+  gameLevel,
+  renderWhileSolving,
+  minesFound,
 });
 
 const mapDispatchToProps = {
   finishGame,
-  setGameLevel,
+  setCellSize,
   setRenderWhileSolvingValue,
   solveUntilWin,
   startOver,

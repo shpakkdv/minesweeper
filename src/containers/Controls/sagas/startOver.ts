@@ -1,5 +1,7 @@
+import { batchActions } from 'redux-batched-actions';
 import { call, put, select } from 'redux-saga/effects';
 
+import { setAppStatus } from 'containers/Controls/actions';
 import { setField, setMines } from 'containers/GameField/actions';
 import { getMinesweeper } from 'services/Minesweeper';
 import { createMines } from 'utils/createMines';
@@ -18,8 +20,11 @@ export function* startOver(action: Action.StartOver) {
     const minesweeper = getMinesweeper();
     const field: ReturnSagaType<typeof minesweeper.start> = yield call([minesweeper, minesweeper.start], gameLevel);
 
-    yield put(setField(field));
-    yield put(setMines(createMines(field)));
+    yield put(batchActions([
+      setField(field),
+      setMines(createMines(field)),
+      setAppStatus(null),
+    ]));
   } catch (error) {
     console.warn('Error occurred during starting over.', action, error);
     alert('Error occurred. Please reload the page.');

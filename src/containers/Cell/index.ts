@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import Cell from 'components/Cell';
 import { setMine } from 'containers/GameField/actions';
+import { mines } from 'containers/GameField/selectors';
 import { openItem } from './actions';
 
-const mapStateToProps = (state) => ({
-  mines: state.gameField.mines,
+const mapStateToProps = createStructuredSelector({
+  mines,
 });
 
 const mapDispatchToProps = {

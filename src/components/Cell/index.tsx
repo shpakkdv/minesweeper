@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { CellProps } from './models';
 import styles from './styles.module.scss';
@@ -6,24 +6,31 @@ import styles from './styles.module.scss';
 const Cell: React.FunctionComponent<CellProps> = ({ x, y, value, mines, openItem, setMine }) => {
   const mine = mines[y][x];
 
-  const onClick = () => {
-    if (!mine) {
-      openItem(x, y);
-    }
-  };
+  const onClick = useCallback<React.MouseEventHandler<HTMLButtonElement>>(
+    () => {
+      if (!mine) {
+        openItem(x, y);
+      }
+    },
+    [mine, openItem],
+  );
 
-  const rightMouseClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.preventDefault();
-    setMine(x, y, !mine);
-  };
+  const onContextMenu = useCallback<React.MouseEventHandler<HTMLButtonElement>>(
+    (event) => {
+      event.preventDefault();
+      setMine(x, y, !mine);
+    },
+    [mine, setMine],
+  );
 
   const opened = value !== -1;
+  const title = `x: ${x}, y: ${y}`;
 
   if (opened) {
     return (
       <div
         className={styles.OpenedCell}
-        title={`x: ${x}, y: ${y}`}
+        title={title}
       >
         {value === 0 ? '' : value}
       </div>
@@ -33,9 +40,9 @@ const Cell: React.FunctionComponent<CellProps> = ({ x, y, value, mines, openItem
   return (
     <button
       className={styles.Cell}
-      onContextMenu={rightMouseClick}
+      onContextMenu={onContextMenu}
       onClick={onClick}
-      title={`x: ${x}, y: ${y}`}
+      title={title}
     >
       {mine ? '!' : ''}
     </button>

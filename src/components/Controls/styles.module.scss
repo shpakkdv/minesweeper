@@ -7,6 +7,10 @@
     margin-bottom: 5px;
     cursor: pointer;
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
     &:first-child {
       margin-top: 5px;
     }
@@ -29,6 +33,10 @@
   align-items: center;
   height: 50%;
 
+  & input:disabled {
+    cursor: not-allowed;
+  }
+
   & label {
     padding-left: 5px;
     user-select: none;
@@ -37,4 +45,18 @@
 
 .info {
   margin-right: 10px;
+}
+
+.numericInput {
+  & input {
+    width: 50px;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  & label {
+    padding-left: 5px;
+  }
 }

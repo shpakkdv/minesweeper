@@ -1,28 +1,26 @@
-import { put, delay } from 'redux-saga/effects';
+import { batchActions } from 'redux-batched-actions';
+import { call, put } from 'redux-saga/effects';
 
-import { MINESWEEPER_URL } from 'constant';
-import { Field } from 'models';
-import { startMinesweeper, Minesweeper } from 'services/Minesweeper';
-import { setGameLevel, setGameLoading } from 'containers/Controls/actions';
+import { AppStatus, MINESWEEPER_URL } from 'constant';
+import { startMinesweeper } from 'services/Minesweeper';
+import { setAppStatus, setGameLevel } from 'containers/Controls/actions';
 import { setField } from '../actions';
 import { Action } from '../models';
 
 export function* startGame(action: Action.StartGame) {
   try {
-    yield put(setGameLoading(true));
+    yield put(setAppStatus(AppStatus.LOADING));
 
     const { level } = action.payload;
 
-    console.warn('SAGA', action)
-    // TODO use call
-    // TODO types
-    const minesweeper: Minesweeper = yield startMinesweeper(MINESWEEPER_URL);
-    const field: Field = yield minesweeper.start(level);
+    const minesweeper: ReturnSagaType<typeof startMinesweeper> = yield call(startMinesweeper, MINESWEEPER_URL);
+    const field: ReturnSagaType<typeof minesweeper.start> = yield call([minesweeper, minesweeper.start], level);
 
-    // TODO batch action
-    yield put(setField(field));
-    yield put(setGameLevel(level));
-    yield put(setGameLoading(false));
+    yield put(batchActions([
+      setField(field),
+      setGameLevel(level),
+      setAppStatus(null)
+    ]));
   } catch (error) {
     console.log('Error occurred during starting the game.', action, error);
   }

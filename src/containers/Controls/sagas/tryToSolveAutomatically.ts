@@ -1,5 +1,8 @@
+import { batchActions } from 'redux-batched-actions';
 import { call, put, select } from 'redux-saga/effects';
 
+import { AppStatus, TimeToSolveByLevel } from 'constant';
+import { setAppStatus } from 'containers/Controls/actions';
 import { setField, setMines } from 'containers/GameField/actions';
 import * as gameFiledSelectors from 'containers/GameField/selectors';
 import { getMinesweeper } from 'services/Minesweeper';
@@ -9,12 +12,16 @@ import * as controlsSelectors from '../selectors';
 
 export function* tryToSolveAutomatically(action: Action.TryToSolveAutomatically) {
   try {
-    const confirmed = confirm('Are you sure you want to try solving? This can take a lot of time...');
+    const gameLevel: ReturnSagaType<typeof controlsSelectors.gameLevel> = yield select(controlsSelectors.gameLevel);
+    const time = TimeToSolveByLevel[gameLevel];
+
+    const confirmed = confirm(`Are you sure you want to try solving? This can take up to ${time}...`);
     if (!confirmed) {
       return;
     }
 
-    const gameLevel: ReturnSagaType<typeof controlsSelectors.gameLevel> = yield select(controlsSelectors.gameLevel);
+    yield put(setAppStatus(AppStatus.SOLVING));
+
     const renderWhileSolving: ReturnSagaType<typeof controlsSelectors.renderWhileSolving> = yield select(controlsSelectors.renderWhileSolving);
     const field: ReturnSagaType<typeof gameFiledSelectors.field> = yield select(gameFiledSelectors.field);
     const mines: ReturnSagaType<typeof gameFiledSelectors.mines> = yield select(gameFiledSelectors.mines);
@@ -30,11 +37,16 @@ export function* tryToSolveAutomatically(action: Action.TryToSolveAutomatically)
       false,
     );
 
-    yield put(setField(result.field));
-    yield put(setMines(result.mines));
+    yield put(batchActions([
+      setField(result.field),
+      setMines(result.mines),
+      setAppStatus(null),
+    ]));
 
     alert('Unable to continue. Please select the next item manually.');
   } catch (error) {
+    yield put(setAppStatus(AppStatus.FINISHED));
+
     if (typeof error === 'string' && error.includes('You win')) {
       return alert(error);
     }

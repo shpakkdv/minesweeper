@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import GameField from 'components/GameField';
+import { appStatus, gameLevel, cellSize } from 'containers/Controls/selectors';
 import { startGame } from './actions';
+import { field } from './selectors';
 
-const mapStateToProps = (state) => ({
-  field: state.gameField.field,
-  gameLevel: state.controls.gameLevel,
-  loading: state.controls.loading,
+const mapStateToProps = createStructuredSelector({
+  field,
+  gameLevel,
+  appStatus,
+  cellSize,
 });
 
 const mapDispatchToProps = {

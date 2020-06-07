@@ -12,10 +12,17 @@ export const setGameLevel: ActionCreator.SetGameLevel = (gameLevel) => ({
   },
 });
 
-export const setGameLoading: ActionCreator.SetGameLoading = (loading) => ({
-  type: ActionType.SET_GAME_LOADING,
+export const setAppStatus: ActionCreator.SetAppStatus = (appStatus) => ({
+  type: ActionType.SET_APP_STATUS,
   payload: {
-    loading,
+    appStatus,
+  },
+});
+
+export const setCellSize: ActionCreator.SetCellSize = (cellSize) => ({
+  type: ActionType.SET_CELL_SIZE,
+  payload: {
+    cellSize,
   },
 });
 
