@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter Render a closed cell with a mine 1`] = `
+<button
+  className="Cell"
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  title="x: 0, y: 0"
+>
+  !
+</button>
+`;
+
+exports[`Counter Render a closed cell without a mine 1`] = `
+<button
+  className="Cell"
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  title="x: 0, y: 0"
+/>
+`;
+
+exports[`Counter Render an opened cell 1`] = `
+<div
+  className="OpenedCell"
+  title="x: 0, y: 0"
+>
+  3
+</div>
+`;

@@ -32,7 +32,7 @@ export function startMinesweeper(url: string): Promise<Minesweeper> {
 }
 
 export class Minesweeper {
-  // TODO type
+  // TODO: type
   private callbacks: {
     resolve: (value?: any) => void,
     reject: (reason?: any) => void,
@@ -41,7 +41,6 @@ export class Minesweeper {
   constructor(
     private socket: WebSocket,
   ) {
-    console.log('socket', socket);
     socket.onopen = null;
 
     socket.onmessage = this.onMessage;
@@ -84,8 +83,6 @@ export class Minesweeper {
 
   private onMessage = (event: MessageEvent): void => {
     const response = String(event.data);
-    console.log('DATA', response)
-    console.log('DATA socket', this.socket)
 
     switch (true) {
       case ['new: OK', 'open: OK'].includes(response): {

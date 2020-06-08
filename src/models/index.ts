@@ -16,3 +16,8 @@ export type Field = Row[];
  * Same matrix as Field - detected mines
  */
 export type Mines = boolean[][];
+
+/**
+ * x, y
+ */
+export type Coordinates = [number, number];

@@ -1,5 +1,5 @@
 /**
- * Mutate mines array
+ * Mutates mines array
  * Returs whether any mine detected or not
  */
 export function detectMinesAround(item: number, closedItemsAround: [number, number][], mines: boolean[][]): boolean {

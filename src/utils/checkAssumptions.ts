@@ -5,7 +5,6 @@ import { getItemsAround, getMines, getCanOpenItems } from './getItems';
 import { validateField } from './validateField';
 
 export function checkAssumptions(originalField: number[][], originalMines: boolean[][]): [number, number] | void {
-  console.warn('************ ASSUMPTIONS');
   const cache: Record<string, boolean> = {};
 
   for (let y = 0, yLength = originalField.length; y < yLength; y++) {
@@ -21,8 +20,6 @@ export function checkAssumptions(originalField: number[][], originalMines: boole
       const minesLeftNumber = item - minesAround.length;
 
       if (minesLeftNumber === 1) {
-        console.log('x, y, item', x, y, item);
-
         while (canOpenItems.length > 0) {
           // item to mark as mine
           const [x, y] = canOpenItems.pop();
@@ -41,9 +38,10 @@ export function checkAssumptions(originalField: number[][], originalMines: boole
 
           detectAllMines(field, mines);
           const isValidField = validateField(field, mines);
-          console.warn('valid', isValidField, x, y, );
 
           if (!isValidField) {
+            console.warn('ASSUMPTION', x, y);
+
             return [x, y];
           }
         }
@@ -55,23 +53,3 @@ export function checkAssumptions(originalField: number[][], originalMines: boole
 function getCacheKey(...args: number[]): string {
   return args.join(',');
 }
-
-// function getAllCombinations(items: [number, number][]): [[number, number], [number, number]][] {
-//   const result = [] as [[number, number], [number, number]][];
-
-//   for (let i = 0, itemsLength = items.length; i < itemsLength; i++) {
-//     const first = items[i];
-
-//     for (let j = i + 1; j < itemsLength; j++) {
-//       result.push([first, items[j]]);
-//     }
-//   }
-
-//   return result;
-// }
-
-// function checkAllAssumptions() {
-//   for (let i = 1; i < 3; i++) {
-
-//   }
-// }

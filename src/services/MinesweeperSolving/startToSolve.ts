@@ -15,7 +15,6 @@ export async function startToSolve(minesweeper: Minesweeper, field: Field, level
     return resultField;
   }
 
-  // TODO
   let x = Math.floor(xLength / 2);
   const y = Math.floor(yLength / 2);
 
@@ -27,6 +26,7 @@ export async function startToSolve(minesweeper: Minesweeper, field: Field, level
       renderWhileSolving && updateGameField(resultField);
       amountOfClosedCells = getAmountOfClosedCells(resultField);
       openedCellsCount++;
+      // TODO: improve next item logic
       x++;
 
       if (x >= xLength) {

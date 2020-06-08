@@ -1,16 +1,16 @@
 import { Reducer } from 'redux';
 
+import { IAction } from 'models';
 import { createMines } from 'utils/createMines';
 import { ActionType } from './constants';
-import { State } from './models';
+import { State, Action } from './models';
 
 const initialState: State = {
   field: [[]],
   mines: [[]],
 };
 
-const reducer = (state = initialState, action) => {
-  console.log('my ACTION', action);
+const reducer: Reducer<State, IAction> = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SET_FIELD:
       return setField(state, action);
@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-export const setField: Reducer<State> = (state, { payload: { field } }) => {
+export const setField: Reducer<State, Action.SetField> = (state, { payload: { field } }) => {
   let { mines } = state;
 
   if (mines[0].length === 0) {
@@ -40,14 +40,14 @@ export const setField: Reducer<State> = (state, { payload: { field } }) => {
   };
 };
 
-export const setMines = (state, { payload: { mines } }) => {
+export const setMines: Reducer<State, Action.SetMines> = (state, { payload: { mines } }) => {
   return {
     ...state,
     mines,
   };
 };
 
-export const setMine = (state, { payload: { x, y, value } }) => {
+export const setMine: Reducer<State, Action.SetMine> = (state, { payload: { x, y, value } }) => {
   return {
     ...state,
     mines: state.mines.map((row, rowIndex) => rowIndex === y ? row.map((cell, cellIndex) => cellIndex === x ? value : cell) : row),

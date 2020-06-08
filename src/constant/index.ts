@@ -32,7 +32,7 @@ export const MinesNumberByLevel: Record<GameLevel, number> = {
 
 export const TimeToSolveByLevel: Record<GameLevel, string> = {
   [GameLevel.Level_1]: '30 seconds',
-  [GameLevel.Level_2]: '2 minutes',
+  [GameLevel.Level_2]: '4 minutes',
   [GameLevel.Level_3]: '15 minutes',
   [GameLevel.Level_4]: 'one hour',
 };

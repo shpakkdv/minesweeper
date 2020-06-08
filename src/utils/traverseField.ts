@@ -1,3 +1,5 @@
+import { Field } from 'models';
+
 type TraverseCallback<T = void> = (
   item: number,
   x: number,
@@ -6,7 +8,14 @@ type TraverseCallback<T = void> = (
   yLength: number,
 ) => T;
 
-export function traverseField<T = void>(field: number[][], callback: TraverseCallback<T>, skipUnusefulItems = true): T {
+/**
+ * Traverses Field by rows
+ * @param field
+ * @param callback - callback is invoked with every item of the field.
+ * If callback returns any truly value, traversal will be stopped and this value will be returned
+ * @param skipUnusefulItems - skip items which don't have mine around or are not closed yet. True by default
+ */
+export function traverseField<T = void>(field: Field, callback: TraverseCallback<T>, skipUnusefulItems = true): T {
   for (let y = 0, yLength = field.length; y < yLength; y++) {
     const row = field[y];
 

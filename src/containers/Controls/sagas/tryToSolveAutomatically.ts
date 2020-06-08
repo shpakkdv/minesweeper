@@ -47,7 +47,7 @@ export function* tryToSolveAutomatically(action: Action.TryToSolveAutomatically)
   } catch (error) {
     yield put(setAppStatus(AppStatus.FINISHED));
 
-    if (typeof error === 'string' && error.includes('You win')) {
+    if (typeof error === 'string' && (error.includes('You win') || error.includes('You lose'))) {
       return alert(error);
     }
 
