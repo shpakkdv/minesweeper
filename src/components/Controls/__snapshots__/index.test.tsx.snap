@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Controls Render controls 1`] = `
+<div
+  className="Controls"
+>
+  <div
+    className="controlsContainer"
+  >
+    <div
+      className="column"
+    >
+      <button
+        disabled={true}
+        onClick={[MockFunction]}
+      >
+        Try to solve automatically
+      </button>
+      <button
+        disabled={true}
+        onClick={[MockFunction]}
+      >
+        Solve until the win
+      </button>
+    </div>
+    <div
+      className="column"
+    >
+      <button
+        disabled={true}
+        onClick={[MockFunction]}
+      >
+        Start over
+      </button>
+      <button
+        disabled={true}
+        onClick={[MockFunction]}
+      >
+        Finish the game
+      </button>
+    </div>
+    <div
+      className="column"
+    >
+      <div
+        className="checkbox"
+      >
+        <input
+          checked={false}
+          disabled={true}
+          id="render"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label
+          htmlFor="render"
+        >
+          Render while solving
+        </label>
+      </div>
+      <div
+        className="numericInput"
+      >
+        <input
+          disabled={true}
+          id="cellSize"
+          max="100"
+          min="5"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value={40}
+        />
+        <label
+          htmlFor="cellSize"
+        >
+          Cell size (5-100px)
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;

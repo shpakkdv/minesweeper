@@ -1,10 +1,11 @@
 import cloneDeep from 'lodash/cloneDeep';
 
+import { Field, Mines, Coordinates } from 'models';
 import { detectAllMines } from './detectAllMines';
 import { getItemsAround, getMines, getCanOpenItems } from './getItems';
 import { validateField } from './validateField';
 
-export function checkAssumptions(originalField: number[][], originalMines: boolean[][]): [number, number] | void {
+export function checkAssumptions(originalField: Field, originalMines: Mines): Coordinates | void {
   const cache: Record<string, boolean> = {};
 
   for (let y = 0, yLength = originalField.length; y < yLength; y++) {

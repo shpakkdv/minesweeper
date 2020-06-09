@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameField Render game levels if the level is not chosen 1`] = `
+<div
+  className="chooseLevel"
+>
+  <h2>
+    Choose game level:
+  </h2>
+  <form>
+    <div
+      className="option"
+      key="1"
+    >
+      <input
+        checked={true}
+        id="1"
+        name="level"
+        onChange={[Function]}
+        type="radio"
+      />
+      <label
+        htmlFor="1"
+      >
+        Easy
+      </label>
+    </div>
+    <div
+      className="option"
+      key="2"
+    >
+      <input
+        checked={false}
+        id="2"
+        name="level"
+        onChange={[Function]}
+        type="radio"
+      />
+      <label
+        htmlFor="2"
+      >
+        Medium
+      </label>
+    </div>
+    <div
+      className="option"
+      key="3"
+    >
+      <input
+        checked={false}
+        id="3"
+        name="level"
+        onChange={[Function]}
+        type="radio"
+      />
+      <label
+        htmlFor="3"
+      >
+        Hard
+      </label>
+    </div>
+    <div
+      className="option"
+      key="4"
+    >
+      <input
+        checked={false}
+        id="4"
+        name="level"
+        onChange={[Function]}
+        type="radio"
+      />
+      <label
+        htmlFor="4"
+      >
+        Impossible
+      </label>
+    </div>
+  </form>
+  <button
+    onClick={[Function]}
+  >
+    START GAME
+  </button>
+</div>
+`;
+
+exports[`GameField Render loading 1`] = `
+<div
+  className="loading"
+>
+  Loading...
+</div>
+`;
+
+exports[`GameField Render the game 1`] = `
+<div
+  className="GameField"
+  style={
+    Object {
+      "gridAutoRows": "40px",
+      "gridTemplateColumns": "repeat(3, 40px)",
+    }
+  }
+>
+  <Row
+    key="0"
+    row={
+      Array [
+        -1,
+        -1,
+        -1,
+      ]
+    }
+    rowIndex={0}
+  />
+  <Row
+    key="1"
+    row={
+      Array [
+        -1,
+        -1,
+        -1,
+      ]
+    }
+    rowIndex={1}
+  />
+  <Row
+    key="2"
+    row={
+      Array [
+        -1,
+        -1,
+        -1,
+      ]
+    }
+    rowIndex={2}
+  />
+</div>
+`;

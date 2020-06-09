@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import Cell from './index';
 
-describe('Counter', () => {
+describe('Cell', () => {
   it('Render a closed cell with a mine', () => {
     const wrapper = shallow(
       <Cell
@@ -49,7 +49,7 @@ describe('Counter', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('Clickicng on a closed cell without a mine should open it', () => {
+  it('Clicking on a closed cell without a mine should open it', () => {
     const openItem = jest.fn();
     const wrapper = shallow(
       <Cell
@@ -69,7 +69,7 @@ describe('Counter', () => {
     expect(openItem).toBeCalledTimes(1);
   });
 
-  it('Clickicng on closed cell with a mine should not open it', () => {
+  it('Clicking on closed cell with a mine should not open it', () => {
     const openItem = jest.fn();
     const wrapper = shallow(
       <Cell

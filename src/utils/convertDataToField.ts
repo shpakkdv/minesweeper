@@ -1,10 +1,10 @@
 import { Field } from 'models';
 
 export function convertDataToField(field: string): Field {
-  const trimedField = field.trim();
+  const trimmedField = field.trim();
 
-  return trimedField
-    .slice(trimedField.indexOf('\n') + 1)
+  return trimmedField
+    .slice(trimmedField.indexOf('\n') + 1)
     .split('\n')
     .map(row => row.trim().split('').map(item => {
       const itemNumber = Number(item);

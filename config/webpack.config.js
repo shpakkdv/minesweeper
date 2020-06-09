@@ -122,7 +122,13 @@ module.exports = function(webpackEnv) {
           options: {
             sourceMap: true,
           },
-        }
+        },
+        {
+          loader: require.resolve('sass-resources-loader'),
+          options: {
+            resources: paths.globalCSS,
+          },
+        },
       );
     }
     return loaders;

@@ -1,8 +1,10 @@
+import { Mines, Coordinates } from 'models';
+
 /**
  * Mutates mines array
- * Returs whether any mine detected or not
+ * Returns whether any mine detected or not
  */
-export function detectMinesAround(item: number, closedItemsAround: [number, number][], mines: boolean[][]): boolean {
+export function detectMinesAround(item: number, closedItemsAround: Coordinates[], mines: Mines): boolean {
   let detected = false;
 
   if (item === closedItemsAround.length) {
