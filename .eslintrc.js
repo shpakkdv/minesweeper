@@ -11,7 +11,6 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./tsconfig.json",
     sourceType: "module",
     ecmaFeatures: {
       jsx: true,
@@ -75,5 +74,13 @@ module.exports = {
       ImportDeclaration: { multiline: true, consistent: true },
       ExportDeclaration: { multiline: true, consistent: true },
     }],
-  }
+  },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+    }
+  ],
 };
