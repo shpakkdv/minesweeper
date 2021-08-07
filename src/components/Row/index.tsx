@@ -7,6 +7,7 @@ const Row: React.FunctionComponent<RowProps> = ({ row, rowIndex }) => (
   <>
     {row.map((value, x) => (
       <Cell
+        // eslint-disable-next-line react/no-array-index-key
         key={x}
         x={x}
         y={rowIndex}

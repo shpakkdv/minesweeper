@@ -3,9 +3,8 @@ import { runSaga } from 'redux-saga';
 import { AppStatus } from 'constant';
 import { setAppStatus } from 'containers/Controls/actions';
 import { getMinesweeper } from 'services/Minesweeper';
-import { solveUntilWin } from './solveUntilWin';
-
 import { solveUntilWin as solve } from 'services/MinesweeperSolving/solveUntilWin';
+import { solveUntilWin } from './solveUntilWin';
 
 jest.mock('services/MinesweeperSolving/solveUntilWin');
 jest.mock('containers/Controls/actions', () => ({
@@ -17,7 +16,6 @@ jest.mock('services/Minesweeper', () => ({
 
 globalThis.confirm = jest.fn(() => true);
 globalThis.alert = jest.fn();
-
 
 describe('finishGame', () => {
   beforeEach(() => {
@@ -35,7 +33,7 @@ describe('finishGame', () => {
   });
 
   it('Set correct app status in case of error', () => {
-    (getMinesweeper as jest.Mock).mockImplementation(() => { throw 'You lose'; });
+    (getMinesweeper as jest.Mock).mockImplementation(() => { throw new Error('You lose'); });
 
     const dispatch = jest.fn();
     const getState = jest.fn(() => ({ controls: {}, gameField: {} }));

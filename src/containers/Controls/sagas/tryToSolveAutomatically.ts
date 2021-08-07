@@ -6,6 +6,7 @@ import { setAppStatus } from 'containers/Controls/actions';
 import { setField, setMines } from 'containers/GameField/actions';
 import * as gameFiledSelectors from 'containers/GameField/selectors';
 import { getMinesweeper } from 'services/Minesweeper';
+// eslint-disable-next-line import/no-cycle
 import { tryToSolve } from 'services/MinesweeperSolving/tryToSolve';
 import { Action } from '../models';
 import * as controlsSelectors from '../selectors';
@@ -48,7 +49,8 @@ export function* tryToSolveAutomatically(action: Action.TryToSolveAutomatically)
     yield put(setAppStatus(AppStatus.FINISHED));
 
     if (typeof error === 'string' && (error.includes('You win') || error.includes('You lose'))) {
-      return alert(error);
+      alert(error);
+      return;
     }
 
     console.warn('Error occurred during opening item', action, error);

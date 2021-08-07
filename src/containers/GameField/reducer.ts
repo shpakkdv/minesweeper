@@ -40,16 +40,12 @@ export const setField: Reducer<State, Action.SetField> = (state, { payload: { fi
   };
 };
 
-export const setMines: Reducer<State, Action.SetMines> = (state, { payload: { mines } }) => {
-  return {
-    ...state,
-    mines,
-  };
-};
+export const setMines: Reducer<State, Action.SetMines> = (state, { payload: { mines } }) => ({
+  ...state,
+  mines,
+});
 
-export const setMine: Reducer<State, Action.SetMine> = (state, { payload: { x, y, value } }) => {
-  return {
-    ...state,
-    mines: state.mines.map((row, rowIndex) => rowIndex === y ? row.map((cell, cellIndex) => cellIndex === x ? value : cell) : row),
-  };
-};
+export const setMine: Reducer<State, Action.SetMine> = (state, { payload: { x, y, value } }) => ({
+  ...state,
+  mines: state.mines.map((row, rowIndex) => rowIndex === y ? row.map((cell, cellIndex) => cellIndex === x ? value : cell) : row),
+});

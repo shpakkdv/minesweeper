@@ -19,7 +19,7 @@ export async function solveUntilWin(
     let field = currentField;
     let mines = cloneDeep(currentMines);
 
-    while (true) {
+    while (true) { // eslint-disable-line no-constant-condition
       try {
         ({ field, mines } = await tryToSolve(minesweeper, field, mines, gameLevel, renderWhileSolving, true));
         field = await clickRandomItem(minesweeper, field, mines);
@@ -28,7 +28,7 @@ export async function solveUntilWin(
         console.warn('Error', error);
 
         if (typeof error === 'string' && error.includes('You win')) {
-          throw error;
+          throw error; // eslint-disable-line @typescript-eslint/no-throw-literal
         }
 
         field = await minesweeper.start(gameLevel);
@@ -36,5 +36,5 @@ export async function solveUntilWin(
         renderWhileSolving && updateGameField(field, mines);
       }
     }
-  } while (true);
+  } while (true); // eslint-disable-line no-constant-condition
 }

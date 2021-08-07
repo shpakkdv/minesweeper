@@ -29,7 +29,7 @@ export function detectAllMines(field: Field, mines: Mines): void {
       const minesAround = getMines(itemsAround, mines);
       if (minesAround.length === item) {
         const canOpenItems = getCanOpenItems(itemsAround, field, mines);
-        canOpenItems.forEach(([x, y]) => {
+        canOpenItems.forEach(([x, y]) => { // eslint-disable-line @typescript-eslint/no-shadow
           field[y][x] = 0;
         });
       }

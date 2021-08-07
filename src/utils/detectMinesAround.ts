@@ -14,7 +14,7 @@ export function detectMinesAround(item: number, closedItemsAround: Coordinates[]
         detected = true;
         mines[y][x] = true;
       }
-    })
+    });
   }
 
   return detected;

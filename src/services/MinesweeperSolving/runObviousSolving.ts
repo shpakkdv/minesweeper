@@ -4,11 +4,12 @@ import { detectMinesAround } from 'utils/detectMinesAround';
 import { getAmountOfClosedCells, getAmountOfMines } from 'utils/getAmountOfCells';
 import { getClosedItems, getItemsAround, getMines, getCanOpenItems } from 'utils/getItems';
 import { Minesweeper } from '../Minesweeper';
+// eslint-disable-next-line import/no-cycle
 import { updateGameField } from '../updateGameField';
 
 export async function runObviousSolving(minesweeper: Minesweeper, field: Field, mines: Mines, renderWhileSolving: boolean): Promise<Field> {
+  const resultMines = mines;
   let resultField = field;
-  let resultMines = mines;
   let amountOfClosedCells = getAmountOfClosedCells(field);
   let newAmountOfClosedCells: number = null;
   let amountOfMines = getAmountOfMines(mines);
@@ -25,7 +26,8 @@ export async function runObviousSolving(minesweeper: Minesweeper, field: Field, 
         newAmountOfMines = null;
       }
 
-      for (let y = 0, length = resultField.length; y < length; y++) {
+      const { length } = resultField;
+      for (let y = 0; y < length; y++) {
         const row = resultField[y];
 
         for (let x = 0, rowLength = row.length; x < rowLength; x++) {

@@ -13,7 +13,6 @@ jest.mock('services/Minesweeper', () => ({
 globalThis.confirm = jest.fn(() => true);
 globalThis.alert = jest.fn();
 
-
 describe('finishGame', () => {
   beforeEach(() => {
     jest.clearAllMocks();

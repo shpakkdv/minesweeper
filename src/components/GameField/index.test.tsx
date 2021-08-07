@@ -1,5 +1,5 @@
-import React from 'react'
-import { shallow } from 'enzyme'
+import React from 'react';
+import { shallow } from 'enzyme';
 
 import { AppStatus, GameLevel } from 'constant';
 import GameField from './index';
@@ -13,7 +13,7 @@ describe('GameField', () => {
         appStatus={null}
         cellSize={40}
         startGame={jest.fn()}
-      />
+      />,
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -24,11 +24,11 @@ describe('GameField', () => {
     const wrapper = shallow(
       <GameField
         field={[[]]}
-        gameLevel={GameLevel.Level_1}
+        gameLevel={GameLevel.LEVEL_1}
         appStatus={AppStatus.LOADING}
         cellSize={40}
         startGame={jest.fn()}
-      />
+      />,
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -39,11 +39,11 @@ describe('GameField', () => {
     const wrapper = shallow(
       <GameField
         field={[[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]}
-        gameLevel={GameLevel.Level_1}
+        gameLevel={GameLevel.LEVEL_1}
         appStatus={null}
         cellSize={40}
         startGame={jest.fn()}
-      />
+      />,
     );
 
     expect(wrapper).toMatchSnapshot();

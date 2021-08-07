@@ -5,6 +5,7 @@ import { Minesweeper } from '../Minesweeper';
 
 // TODO: improve the logic
 export async function clickRandomItem(minesweeper: Minesweeper, field: Field, mines: Mines): Promise<Field> {
+  // eslint-disable-next-line consistent-return
   const [x, y] = traverseField(field, (item, x, y) => {
     if (canOpenItem(x, y, field, mines)) {
       return [x, y];

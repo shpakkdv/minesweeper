@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-spaces */
 import { Field, Mines } from 'models';
 import { validateField } from './validateField';
 
@@ -23,7 +24,7 @@ describe('#validateField', () => {
       [-1,  0, 0],
     ];
     const mines: Mines = [
-      [false, false,  false],
+      [false, false, false],
       [false, false, false],
       [false, false, false],
     ];
@@ -37,7 +38,7 @@ describe('#validateField', () => {
       [-1,  0, 0],
     ];
     const mines: Mines = [
-      [false, false,  false],
+      [false, false, false],
       [false, false, false],
       [false, false, false],
     ];
@@ -51,7 +52,7 @@ describe('#validateField', () => {
       [-1, 0, 0],
     ];
     const mines: Mines = [
-      [false,  true,  false],
+      [false,  true, false],
       [true,  false, false],
       [false, false, false],
     ];
@@ -107,7 +108,7 @@ describe('#validateField', () => {
       [-1, 0, 0],
     ];
     const mines: Mines = [
-      [false,  true,  false],
+      [false,  true, false],
       [false, false, false],
       [false, false, false],
     ];

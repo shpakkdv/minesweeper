@@ -2,6 +2,7 @@ import { GameLevel } from 'constant';
 import { Field } from 'models';
 import { getAmountOfClosedCells } from 'utils/getAmountOfCells';
 import { Minesweeper } from '../Minesweeper';
+// eslint-disable-next-line import/no-cycle
 import { updateGameField } from '../updateGameField';
 
 export async function startToSolve(minesweeper: Minesweeper, field: Field, level: GameLevel, renderWhileSolving: boolean): Promise<Field> {

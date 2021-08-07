@@ -3,10 +3,10 @@ export const MINESWEEPER_URL = 'wss://hometask.eg1236.com/game1/';
 
 // enums
 export enum GameLevel {
-  Level_1 = '1',
-  Level_2 = '2',
-  Level_3 = '3',
-  Level_4 = '4',
+  LEVEL_1 = '1',
+  LEVEL_2 = '2',
+  LEVEL_3 = '3',
+  LEVEL_4 = '4',
 }
 
 export enum AppStatus {
@@ -17,24 +17,24 @@ export enum AppStatus {
 
 // helpers
 export const LevelLabelByLevel: Record<GameLevel, string> = {
-  [GameLevel.Level_1]: 'Easy',
-  [GameLevel.Level_2]: 'Medium',
-  [GameLevel.Level_3]: 'Hard',
-  [GameLevel.Level_4]: 'Impossible',
+  [GameLevel.LEVEL_1]: 'Easy',
+  [GameLevel.LEVEL_2]: 'Medium',
+  [GameLevel.LEVEL_3]: 'Hard',
+  [GameLevel.LEVEL_4]: 'Impossible',
 };
 
 export const MinesNumberByLevel: Record<GameLevel, number> = {
-  [GameLevel.Level_1]: 15,
-  [GameLevel.Level_2]: 150,
-  [GameLevel.Level_3]: 1000,
-  [GameLevel.Level_4]: 3500,
+  [GameLevel.LEVEL_1]: 15,
+  [GameLevel.LEVEL_2]: 150,
+  [GameLevel.LEVEL_3]: 1000,
+  [GameLevel.LEVEL_4]: 3500,
 };
 
 export const TimeToSolveByLevel: Record<GameLevel, string> = {
-  [GameLevel.Level_1]: '30 seconds',
-  [GameLevel.Level_2]: '4 minutes',
-  [GameLevel.Level_3]: '15 minutes',
-  [GameLevel.Level_4]: 'one hour',
+  [GameLevel.LEVEL_1]: '30 seconds',
+  [GameLevel.LEVEL_2]: '4 minutes',
+  [GameLevel.LEVEL_3]: '15 minutes',
+  [GameLevel.LEVEL_4]: 'one hour',
 };
 
-export const GAME_LEVELS: GameLevel[] = [GameLevel.Level_1, GameLevel.Level_2, GameLevel.Level_3, GameLevel.Level_4];
+export const GAME_LEVELS: GameLevel[] = [GameLevel.LEVEL_1, GameLevel.LEVEL_2, GameLevel.LEVEL_3, GameLevel.LEVEL_4];

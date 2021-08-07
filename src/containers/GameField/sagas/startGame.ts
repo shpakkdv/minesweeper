@@ -19,7 +19,7 @@ export function* startGame(action: Action.StartGame) {
     yield put(batchActions([
       setField(field),
       setGameLevel(level),
-      setAppStatus(null)
+      setAppStatus(null),
     ]));
   } catch (error) {
     console.log('Error occurred during starting the game.', action, error);

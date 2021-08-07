@@ -34,8 +34,8 @@ export function startMinesweeper(url: string): Promise<Minesweeper> {
 export class Minesweeper {
   // TODO: type
   private callbacks: {
-    resolve: (value?: any) => void,
-    reject: (reason?: any) => void,
+    resolve: (value?: any) => void;
+    reject: (reason?: any) => void;
   } | null = null;
 
   constructor(
@@ -70,6 +70,7 @@ export class Minesweeper {
   private send<T>(message: string): Promise<T> {
     return new Promise((resolve, reject) => {
       if (!this.socket) {
+        // eslint-disable-next-line prefer-promise-reject-errors
         reject('Game finished!');
       }
 
@@ -111,7 +112,7 @@ export class Minesweeper {
         this.resolve();
       }
     }
-  }
+  };
 
   private resolve(value?): void {
     if (this.callbacks) {

@@ -1,5 +1,5 @@
-import React from 'react'
-import { shallow } from 'enzyme'
+import React from 'react';
+import { shallow } from 'enzyme';
 
 import Controls from './index';
 
@@ -18,7 +18,7 @@ describe('Controls', () => {
         solveUntilWin={jest.fn()}
         startOver={jest.fn()}
         tryToSolveAutomatically={jest.fn()}
-      />
+      />,
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -38,7 +38,7 @@ describe('Controls', () => {
         solveUntilWin={jest.fn()}
         startOver={jest.fn()}
         tryToSolveAutomatically={jest.fn()}
-      />
+      />,
     );
 
     const buttons = wrapper.find('button');

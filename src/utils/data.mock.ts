@@ -1,7 +1,7 @@
-import { Field, Mines } from 'models'
+/* eslint-disable no-multi-spaces */
+import { Field, Mines } from 'models';
 
-export const map1 =
-`map:
+export const map1 = `map:
 □□□□□□□□□□
 □□□□□□□□□□
 □□□□□□□□□□
@@ -14,8 +14,7 @@ export const map1 =
 □□□□□□□□□□
 `;
 
-export const map2 =
-`map:
+export const map2 = `map:
 □□□□□□□□10
 □2□□□□□□10
 □3□□□□1110

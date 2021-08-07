@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import cloneDeep from 'lodash/cloneDeep';
 
 import { GameLevel } from 'constant';
@@ -9,8 +10,8 @@ import { runObviousSolving } from './runObviousSolving';
 import { startToSolve } from './startToSolve';
 
 interface TryToSolveResult {
-  field: Field,
-  mines: Mines,
+  field: Field;
+  mines: Mines;
 }
 
 export async function tryToSolve(
@@ -21,13 +22,12 @@ export async function tryToSolve(
   renderWhileSolving: boolean,
   nested: boolean,
 ): Promise<TryToSolveResult> {
+  const resultMines = nested ? mines : cloneDeep(mines);
   let resultField = field;
-  let resultMines = nested ? mines : cloneDeep(mines);
 
   try {
     resultField = await startToSolve(minesweeper, resultField, level, renderWhileSolving);
     resultField = await runObviousSolving(minesweeper, resultField, resultMines, renderWhileSolving);
-
 
     let itemToOpen = checkAssumptions(resultField, resultMines);
     while (itemToOpen) {

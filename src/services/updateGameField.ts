@@ -1,10 +1,10 @@
 import { batchActions } from 'redux-batched-actions';
 import cloneDeep from 'lodash/cloneDeep';
 
-import { IAction } from 'models';
+import { IAction, Field, Mines } from 'models';
 import { setField, setMines } from 'containers/GameField/actions';
+// eslint-disable-next-line import/no-cycle
 import store from 'store';
-import { Field, Mines } from 'models';
 
 export const updateGameField = (field: Field, mines?: Mines): void => {
   const actions: IAction[] = [];

@@ -93,12 +93,18 @@ const Controls: React.FunctionComponent<ControlsProps> = ({
           </div>
         </div>
       </div>
-      {gameLevel &&
+      {!!gameLevel && (
         <div className={classNames(styles.column, styles.info)}>
-          <span>{'Level: '}<b>{LevelLabelByLevel[gameLevel]}</b></span>
-          <span>{'Mines found: '}<b>{`${minesFound} / ${MinesNumberByLevel[gameLevel]}`}</b></span>
+          <span>
+            {'Level: '}
+            <b>{LevelLabelByLevel[gameLevel]}</b>
+          </span>
+          <span>
+            {'Mines found: '}
+            <b>{`${minesFound} / ${MinesNumberByLevel[gameLevel]}`}</b>
+          </span>
         </div>
-      }
+      )}
     </div>
   );
 };

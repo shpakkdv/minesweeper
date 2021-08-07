@@ -12,7 +12,7 @@ const Cell: React.FunctionComponent<CellProps> = ({ x, y, value, mines, openItem
         openItem(x, y);
       }
     },
-    [mine, openItem],
+    [mine, openItem, x, y],
   );
 
   const onContextMenu = useCallback<React.MouseEventHandler<HTMLButtonElement>>(
@@ -20,7 +20,7 @@ const Cell: React.FunctionComponent<CellProps> = ({ x, y, value, mines, openItem
       event.preventDefault();
       setMine(x, y, !mine);
     },
-    [mine, setMine],
+    [mine, setMine, x, y],
   );
 
   const opened = value !== -1;

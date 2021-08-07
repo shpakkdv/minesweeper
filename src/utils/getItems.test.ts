@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment */
 import { Coordinates } from 'models';
 import { getItemsAround, getClosedItems, getMines, getCanOpenItems } from './getItems';
 import * as mock from './data.mock';

@@ -23,7 +23,7 @@ export function checkAssumptions(originalField: Field, originalMines: Mines): Co
       if (minesLeftNumber === 1) {
         while (canOpenItems.length > 0) {
           // item to mark as mine
-          const [x, y] = canOpenItems.pop();
+          const [x, y] = canOpenItems.pop(); // eslint-disable-line @typescript-eslint/no-shadow
 
           const cacheKey = getCacheKey(x, y);
           const hasBeenProcessed = cache[cacheKey];

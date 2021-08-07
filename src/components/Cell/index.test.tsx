@@ -1,5 +1,5 @@
-import React from 'react'
-import { shallow } from 'enzyme'
+import React from 'react';
+import { shallow } from 'enzyme';
 
 import Cell from './index';
 
@@ -13,7 +13,7 @@ describe('Cell', () => {
         mines={[[true]]}
         setMine={jest.fn()}
         openItem={jest.fn()}
-      />
+      />,
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -28,7 +28,7 @@ describe('Cell', () => {
         mines={[[false]]}
         setMine={jest.fn()}
         openItem={jest.fn()}
-      />
+      />,
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -43,7 +43,7 @@ describe('Cell', () => {
         mines={[[false]]}
         setMine={jest.fn()}
         openItem={jest.fn()}
-      />
+      />,
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -59,7 +59,7 @@ describe('Cell', () => {
         mines={[[false]]}
         setMine={jest.fn()}
         openItem={openItem}
-      />
+      />,
     );
     const button = wrapper.find('button');
     button.simulate('click');
@@ -79,7 +79,7 @@ describe('Cell', () => {
         mines={[[true]]}
         setMine={jest.fn()}
         openItem={openItem}
-      />
+      />,
     );
     const button = wrapper.find('button');
     button.simulate('click');
@@ -99,7 +99,7 @@ describe('Cell', () => {
         mines={[[false]]}
         setMine={setMine}
         openItem={jest.fn()}
-      />
+      />,
     );
     const button = wrapper.find('button');
     button.simulate('contextmenu', { preventDefault: jest.fn() });
@@ -118,7 +118,7 @@ describe('Cell', () => {
         mines={[[false]]}
         setMine={jest.fn()}
         openItem={jest.fn()}
-      />
+      />,
     );
     const button = wrapper.find('button');
 

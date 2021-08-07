@@ -4,6 +4,7 @@ import { AppStatus } from 'constant';
 import { setAppStatus } from 'containers/Controls/actions';
 import * as gameFiledSelectors from 'containers/GameField/selectors';
 import { getMinesweeper } from 'services/Minesweeper';
+// eslint-disable-next-line import/no-cycle
 import { solveUntilWin as solve } from 'services/MinesweeperSolving/solveUntilWin';
 import { Action } from '../models';
 import * as controlsSelectors from '../selectors';
